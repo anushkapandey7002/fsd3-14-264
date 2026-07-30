@@ -1,1 +1,1 @@
-console.log("Contents\n",readContent("notes.txt"));
+await rm("docs",{recursive: true});
