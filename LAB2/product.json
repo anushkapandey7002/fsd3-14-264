@@ -1,14 +1,8 @@
 [
   {
-    "id": 111,
-    "name": "HP Laptop",
-    "price": 47000,
-    "qty": 3
-  },
-  {
     "id": 105,
     "name": "Mobile S26",
     "price": 85000,
-    "qty": 5
+    "qty": 1
   }
 ]

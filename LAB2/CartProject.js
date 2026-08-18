@@ -57,8 +57,14 @@ const updateQuantity = async (pid) => {
 const cart = await getCart();
   const isFoundInCart = cart.find((item) => item.id === pid); //find - array function hai
   if (isFoundInCart) {
-    isFoundInCart.qty -= 1;
-    await saveCart(cart);
+    if(isFoundInCart.qty == 1){
+      await removeProduct(pid);
+    }
+    else{
+      isFoundInCart.qty -= 1;
+          await saveCart(cart);
+
+    }
   console.log(`${isFoundInCart.name} quantity updated in 🛒`);
   } else {
     console.log(`Product with id ${pid} not found`);
