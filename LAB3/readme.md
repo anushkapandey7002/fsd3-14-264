@@ -21,7 +21,7 @@ npm start - command in lab3
 
 # whenever a change is there - restart server everytime(**problem**)
 install libraray
-search on google - **npm** - search there **nodemon**
+search on google - **npm** - search there **nodemon**//no need to restart server 
 
 **npm install** - in lab3 terminal type : npm i nodemon -D
 package.json me ye add ho gya hoga:
@@ -30,4 +30,19 @@ package.json me ye add ho gya hoga:
     
 **npm run dev** - changes automatically gets saved
 
+//20 aug
+call back - arrow/nameless function : ()=>{}
+
+# Method
+1. Get
+2. Post
+3. Put
+4. Patch
+5. Delete
+
+# http methods
+url,method,socket,headers
+
+# http Status Codes: 200-ok, 201-created, 400-bad request, 401-unauthorised, 403-forbiden, 404-page not found, 500-int server error **status code**
+A small package to install which include all these things : 
 
