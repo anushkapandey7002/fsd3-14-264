@@ -46,3 +46,24 @@ url,method,socket,headers
 # http Status Codes: 200-ok, 201-created, 400-bad request, 401-unauthorised, 403-forbiden, 404-page not found, 500-int server error **status code**
 A small package to install which include all these things : 
 
+# API
+any api can be of four types: get(R:read), post(C:create), put&patch(U: update), duck(D:delete)
+api can be responsed by server with status code and json data 
+api generally start with api/version :- eg: /api/v1/products    /api/v1/products/2169   /api/v1/users    
+/api/v1/users/anushka      /api/v1/product?=mobile
+by default browser can check only get request, to check other 3 request type like : post, put&patch or delete we require frontend or 3rd party api tester(like:postman,thunderclient, echoapi) **echoapi**
+
+npm - installation
+cntrl+C - server stop
+npm start - start main program
+npm run dev =
+
+# RT0 - request time out
+
+# content type
+content-type is used to tell the browser what type of data is being sent in the response. In this case, it is set to 'text/json' to indicate that the response will be in JSON format.
+
+1.'text/html'- 
+2. 'text/json' - 
+3. 'text/plain' - 
+

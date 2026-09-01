@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI Agents Hub</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080a0f;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 10, 15, 0.94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #252a34;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      height: 72px;
+      margin: auto;
+      padding: 0 24px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #8b6cff;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #a8afbb;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .submit-btn {
+      background: #7c5cff;
+      color: white !important;
+      padding: 10px 17px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .submit-btn:hover {
+      background: #6848ee;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 24px 65px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      margin-bottom: 22px;
+
+      border: 1px solid #3c315e;
+      border-radius: 30px;
+
+      background: #171225;
+      color: #bbaeff;
+
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .gradient {
+      background: linear-gradient(
+        90deg,
+        #8b6cff,
+        #c76cff,
+        #5acbff
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+
+      color: #949ba8;
+      font-size: 17px;
+    }
+
+    /* ================= SEARCH ================= */
+
+    .search-container {
+      max-width: 700px;
+      margin: 35px auto 0;
+      position: relative;
+    }
+
+    .search-container input {
+      width: 100%;
+
+      padding: 18px 20px 18px 52px;
+
+      background: #14171e;
+      border: 1px solid #30343f;
+      border-radius: 12px;
+
+      color: white;
+      font-size: 15px;
+
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .search-container input:focus {
+      border-color: #7c5cff;
+      box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12);
+    }
+
+    .search-container input::placeholder {
+      color: #6f7682;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 13px;
+
+      font-size: 23px;
+      color: #858c99;
+    }
+
+    /* ================= MAIN ================= */
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px 70px;
+    }
+
+    /* ================= TOOLBAR ================= */
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+      margin-bottom: 30px;
+
+      flex-wrap: wrap;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter {
+      padding: 9px 14px;
+
+      background: #12151b;
+      border: 1px solid #2b3039;
+
+      color: #9ca3af;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-size: 13px;
+
+      transition: 0.2s;
+    }
+
+    .filter:hover {
+      background: #20242d;
+      color: white;
+    }
+
+    .filter.active {
+      background: #7c5cff;
+      border-color: #7c5cff;
+      color: white;
+    }
+
+    .sort {
+      padding: 10px 14px;
+
+      background: #12151b;
+      border: 1px solid #2b3039;
+
+      color: #b4bbc7;
+
+      border-radius: 8px;
+
+      outline: none;
+
+      cursor: pointer;
+    }
+
+    /* ================= SECTION TITLE ================= */
+
+    .section-heading {
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: 25px;
+      margin-bottom: 4px;
+    }
+
+    .section-heading p {
+      color: #737b89;
+      font-size: 13px;
+    }
+
+    /* ================= GRID ================= */
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* ================= CARD ================= */
+
+    .agent-card {
+      overflow: hidden;
+
+      background: #11141a;
+      border: 1px solid #292e38;
+      border-radius: 16px;
+
+      transition: 0.3s;
+    }
+
+    .agent-card:hover {
+      transform: translateY(-6px);
+
+      border-color: #5c4ba5;
+
+      box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ================= IMAGE ================= */
+
+    .agent-image {
+      width: 100%;
+      height: 190px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: #181b23;
+    }
+
+    .agent-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+      transition: transform 0.5s;
+    }
+
+    .agent-card:hover .agent-image img {
+      transform: scale(1.08);
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(8, 10, 15, 0.75),
+          transparent 65%
+        );
+    }
+
+    /* ================= CARD CONTENT ================= */
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 14px;
+    }
+
+    .agent-icon {
+      width: 46px;
+      height: 46px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 11px;
+
+      background: #1c2030;
+
+      font-size: 22px;
+    }
+
+    .verified {
+      padding: 5px 9px;
+
+      background: #10251a;
+
+      color: #69d89a;
+
+      border-radius: 6px;
+
+      font-size: 11px;
+    }
+
+    .agent-card h3 {
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+
+    .company {
+      color: #7f8794;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: #9da4b0;
+      font-size: 13px;
+
+      min-height: 65px;
+    }
+
+    /* ================= TAGS ================= */
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 6px;
+
+      margin: 16px 0;
+    }
+
+    .tag {
+      padding: 5px 8px;
+
+      background: #1b1f27;
+
+      color: #929aa7;
+
+      border-radius: 5px;
+
+      font-size: 10px;
+    }
+
+    /* ================= CARD BOTTOM ================= */
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      border-top: 1px solid #252a32;
+
+      padding-top: 14px;
+    }
+
+    .rating {
+      color: #ffc857;
+      font-size: 13px;
+    }
+
+    .price {
+      color: #858d99;
+      font-size: 11px;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .view-btn {
+      display: block;
+
+      width: 100%;
+
+      margin-top: 16px;
+
+      padding: 10px;
+
+      text-align: center;
+
+      border: 1px solid #343945;
+
+      border-radius: 8px;
+
+      color: #d4d8df;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      transition: 0.2s;
+    }
+
+    .view-btn:hover {
+      background: #7c5cff;
+      border-color: #7c5cff;
+      color: white;
+    }
+
+    /* ================= NO RESULTS ================= */
+
+    .no-results {
+      display: none;
+
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      color: #858d9a;
+
+      padding: 60px 20px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about-section {
+      max-width: 1200px;
+      margin: 0 auto 70px;
+
+      padding: 40px 24px;
+
+      text-align: center;
+    }
+
+    .about-section h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .about-section p {
+      max-width: 700px;
+      margin: auto;
+
+      color: #858d9a;
+
+      font-size: 14px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      border-top: 1px solid #242832;
+
+      text-align: center;
+
+      padding: 35px 20px;
+
+      color: #6e7683;
+
+      font-size: 13px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 950px) {
+
+      .agents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 650px) {
+
+      .navbar {
+        height: 65px;
+      }
+
+      nav a:not(.submit-btn) {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .agents-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        align-items: flex-start;
+      }
+
+      .sort {
+        width: 100%;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="navbar">
+
+      <div class="logo">
+        AI<span>Agents</span>
+      </div>
+
+      <nav>
+
+        <a href="#agents">
+          Explore
+        </a>
+
+        <a href="#categories">
+          Categories
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#" class="submit-btn">
+          Submit Agent
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="badge">
+        ✦ Discover the AI Agent ecosystem
+      </div>
+
+      <h1>
+        The Latest
+        <span class="gradient">
+          AI Agents
+        </span>
+      </h1>
+
+      <p>
+        Explore powerful AI agents for coding, research,
+        productivity, automation, marketing, data analysis
+        and more.
+      </p>
+
+
+      <div class="search-container">
+
+        <span class="search-icon">
+          ⌕
+        </span>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search AI agents..."
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= AGENTS SECTION ================= -->
+
+    <section
+      class="container"
+      id="agents">
+
+
+      <!-- FILTERS -->
+
+      <div class="toolbar">
+
+        <div
+          class="filters"
+          id="categories">
+
+          <button
+            class="filter active"
+            data-category="all">
+            All
+          </button>
+
+          <button
+            class="filter"
+            data-category="coding">
+            Coding
+          </button>
+
+          <button
+            class="filter"
+            data-category="research">
+            Research
+          </button>
+
+          <button
+            class="filter"
+            data-category="productivity">
+            Productivity
+          </button>
+
+          <button
+            class="filter"
+            data-category="marketing">
+            Marketing
+          </button>
+
+          <button
+            class="filter"
+            data-category="automation">
+            Automation
+          </button>
+
+          <button
+            class="filter"
+            data-category="data">
+            Data
+          </button>
+
+        </div>
+
+
+        <select
+          class="sort"
+          id="sortSelect">
+
+          <option value="latest">
+            Latest
+          </option>
+
+          <option value="rating">
+            Highest Rated
+          </option>
+
+          <option value="name">
+            Name A-Z
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- TITLE -->
+
+      <div class="section-heading">
+
+        <h2>
+          Featured AI Agents
+        </h2>
+
+        <p>
+          Popular and powerful AI tools for your workflow
+        </p>
+
+      </div>
+
+
+      <!-- ================= CARD GRID ================= -->
+
+      <div
+        class="agents-grid"
+        id="agentsGrid">
+
+
+        <!-- ===== CLAUDE CODE ===== -->
+
+        <article
+          class="agent-card"
+          data-category="coding"
+          data-name="Claude Code"
+          data-rating="4.9">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=900&q=80"
+              alt="AI coding">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                💻
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Claude Code
+            </h3>
+
+            <div class="company">
+              Anthropic
+            </div>
+
+            <p class="description">
+              An AI coding agent that understands
+              codebases, edits files, runs commands
+              and helps developers build software.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Coding
+              </span>
+
+              <span class="tag">
+                Developer
+              </span>
+
+              <span class="tag">
+                CLI
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.9
+              </span>
+
+              <span class="price">
+                Paid / API
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== PERPLEXITY ===== -->
+
+        <article
+          class="agent-card"
+          data-category="research"
+          data-name="Perplexity"
+          data-rating="4.8">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+              alt="AI research">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                🔎
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Perplexity
+            </h3>
+
+            <div class="company">
+              Perplexity AI
+            </div>
+
+            <p class="description">
+              An AI research assistant that searches
+              the web, analyzes information and provides
+              sourced answers.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Research
+              </span>
+
+              <span class="tag">
+                Search
+              </span>
+
+              <span class="tag">
+                Web
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.8
+              </span>
+
+              <span class="price">
+                Free + Pro
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== CHATGPT AGENT ===== -->
+
+        <article
+          class="agent-card"
+          data-category="productivity"
+          data-name="ChatGPT Agent"
+          data-rating="4.9">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80"
+              alt="Artificial intelligence">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                🤖
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              ChatGPT Agent
+            </h3>
+
+            <div class="company">
+              OpenAI
+            </div>
+
+            <p class="description">
+              An AI agent designed to reason through
+              tasks, use tools and complete complex
+              multi-step workflows.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Productivity
+              </span>
+
+              <span class="tag">
+                AI
+              </span>
+
+              <span class="tag">
+                Automation
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.9
+              </span>
+
+              <span class="price">
+                Subscription
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== DEVIN ===== -->
+
+        <article
+          class="agent-card"
+          data-category="coding"
+          data-name="Devin"
+          data-rating="4.7">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+              alt="Software development">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                🧑‍💻
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Devin
+            </h3>
+
+            <div class="company">
+              Cognition
+            </div>
+
+            <p class="description">
+              An AI software engineering agent that
+              can assist with development tasks and
+              software projects.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Coding
+              </span>
+
+              <span class="tag">
+                Engineering
+              </span>
+
+              <span class="tag">
+                Developer
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.7
+              </span>
+
+              <span class="price">
+                Paid
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== JASPER ===== -->
+
+        <article
+          class="agent-card"
+          data-category="marketing"
+          data-name="Jasper"
+          data-rating="4.6">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
+              alt="Marketing team">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                ✍️
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Jasper
+            </h3>
+
+            <div class="company">
+              Jasper AI
+            </div>
+
+            <p class="description">
+              AI-powered marketing assistance for
+              content creation, campaigns and
+              brand messaging.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Marketing
+              </span>
+
+              <span class="tag">
+                Content
+              </span>
+
+              <span class="tag">
+                Writing
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.6
+              </span>
+
+              <span class="price">
+                Paid
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== MANUS ===== -->
+
+        <article
+          class="agent-card"
+          data-category="automation"
+          data-name="Manus"
+          data-rating="4.7">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80"
+              alt="AI robot automation">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                ⚡
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Manus
+            </h3>
+
+            <div class="company">
+              Manus AI
+            </div>
+
+            <p class="description">
+              A general-purpose AI agent focused on
+              executing complex tasks and turning
+              instructions into completed work.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Automation
+              </span>
+
+              <span class="tag">
+                Agents
+              </span>
+
+              <span class="tag">
+                Research
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.7
+              </span>
+
+              <span class="price">
+                Paid
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== ZAPIER AGENTS ===== -->
+
+        <article
+          class="agent-card"
+          data-category="automation"
+          data-name="Zapier Agents"
+          data-rating="4.5">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+              alt="Automation technology">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                🔗
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Zapier Agents
+            </h3>
+
+            <div class="company">
+              Zapier
+            </div>
+
+            <p class="description">
+              Build AI agents that connect applications
+              and automate repetitive business workflows.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Automation
+              </span>
+
+              <span class="tag">
+                Workflow
+              </span>
+
+              <span class="tag">
+                Business
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.5
+              </span>
+
+              <span class="price">
+                Free + Paid
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== NOTION AI ===== -->
+
+        <article
+          class="agent-card"
+          data-category="productivity"
+          data-name="Notion AI"
+          data-rating="4.5">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=80"
+              alt="Productivity workspace">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                📓
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Notion AI
+            </h3>
+
+            <div class="company">
+              Notion
+            </div>
+
+            <p class="description">
+              AI assistance built into a workspace for
+              writing, organizing information and
+              improving everyday productivity.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Productivity
+              </span>
+
+              <span class="tag">
+                Workspace
+              </span>
+
+              <span class="tag">
+                Writing
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.5
+              </span>
+
+              <span class="price">
+                Free + Paid
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== DATA AGENT ===== -->
+
+        <article
+          class="agent-card"
+          data-category="data"
+          data-name="Data Analyst AI"
+          data-rating="4.6">
+
+          <div class="agent-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"
+              alt="Data analytics dashboard">
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="card-top">
+
+              <div class="agent-icon">
+                📊
+              </div>
+
+              <span class="verified">
+                ✓ Verified
+              </span>
+
+            </div>
+
+
+            <h3>
+              Data Analyst AI
+            </h3>
+
+            <div class="company">
+              AI Analytics
+            </div>
+
+            <p class="description">
+              Analyze datasets, identify trends,
+              create visualizations and generate
+              useful business insights.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Data
+              </span>
+
+              <span class="tag">
+                Analytics
+              </span>
+
+              <span class="tag">
+                Insights
+              </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+              <span class="rating">
+                ★ 4.6
+              </span>
+
+              <span class="price">
+                Free + Paid
+              </span>
+
+            </div>
+
+
+            <a href="#" class="view-btn">
+              View Agent →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- ===== NO RESULTS ===== -->
+
+        <div
+          class="no-results"
+          id="noResults">
+
+          No AI agents found matching your search.
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section
+      class="about-section"
+      id="about">
+
+      <h2>
+        Why AI Agents?
+      </h2>
+
+      <p>
+        AI agents go beyond traditional chatbots by reasoning
+        through tasks, using tools, accessing information and
+        helping automate real-world workflows.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    © 2026 AI Agents Hub · Discover the future of AI
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const cards =
+      Array.from(
+        document.querySelectorAll(".agent-card")
+      );
+
+    const filters =
+      document.querySelectorAll(".filter");
+
+    const sortSelect =
+      document.getElementById("sortSelect");
+
+    const grid =
+      document.getElementById("agentsGrid");
+
+    const noResults =
+      document.getElementById("noResults");
+
+
+    let selectedCategory = "all";
+
+
+    function updateAgents() {
+
+      const searchTerm =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+
+      let visibleCards =
+        cards.filter(card => {
+
+          const category =
+            card.dataset.category;
+
+          const name =
+            card.dataset.name
+              .toLowerCase();
+
+          const content =
+            card.textContent
+              .toLowerCase();
+
+
+          const matchesCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+
+          const matchesSearch =
+            name.includes(searchTerm) ||
+            content.includes(searchTerm);
+
+
+          return (
+            matchesCategory &&
+            matchesSearch
+          );
+
+        });
+
+
+      cards.forEach(card => {
+        card.style.display = "none";
+      });
+
+
+      visibleCards.sort((a, b) => {
+
+        const sortType =
+          sortSelect.value;
+
+
+        if (sortType === "rating") {
+
+          return (
+            parseFloat(b.dataset.rating) -
+            parseFloat(a.dataset.rating)
+          );
+
+        }
+
+
+        if (sortType === "name") {
+
+          return a.dataset.name
+            .localeCompare(
+              b.dataset.name
+            );
+
+        }
+
+
+        return 0;
+
+      });
+
+
+      visibleCards.forEach(card => {
+
+        card.style.display = "block";
+
+        grid.appendChild(card);
+
+      });
+
+
+      noResults.style.display =
+        visibleCards.length === 0
+          ? "block"
+          : "none";
+
+    }
+
+
+    /* SEARCH */
+
+    searchInput.addEventListener(
+      "input",
+      updateAgents
+    );
+
+
+    /* SORT */
+
+    sortSelect.addEventListener(
+      "change",
+      updateAgents
+    );
+
+
+    /* CATEGORY FILTER */
+
+    filters.forEach(filter => {
+
+      filter.addEventListener(
+        "click",
+        () => {
+
+          filters.forEach(btn => {
+
+            btn.classList.remove("active");
+
+          });
+
+
+          filter.classList.add("active");
+
+
+          selectedCategory =
+            filter.dataset.category;
+
+
+          updateAgents();
+
+        }
+      );
+
+    });
+
+
+    /* INITIAL LOAD */
+
+    updateAgents();
+
+  </script>
+
+</body>
+</html>

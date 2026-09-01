@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About - AI Agents Hub</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0d12;
+      color: white;
+    }
+
+    /* NAVBAR */
+
+    header {
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #292d36;
+      position: sticky;
+      top: 0;
+      background: #0b0d12;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #8b6cff;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #8b6cff;
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #8b6cff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #999;
+      font-size: 16px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      width: 85%;
+      max-width: 1000px;
+      margin: 30px auto 70px;
+
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .about img {
+      width: 45%;
+      border-radius: 15px;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      color: #999;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    /* MISSION */
+
+    .mission {
+      background: #11141b;
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    .mission h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .mission p {
+      max-width: 700px;
+      margin: auto;
+      color: #999;
+      line-height: 1.8;
+    }
+
+    /* FEATURES */
+
+    .features {
+      width: 85%;
+      max-width: 1000px;
+      margin: 60px auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      padding: 25px;
+      background: #151820;
+      border: 1px solid #292d36;
+      border-radius: 12px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      border-color: #8b6cff;
+    }
+
+    .feature .icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid #292d36;
+      color: #777;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 750px) {
+
+      nav a {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about img {
+        width: 100%;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <header>
+
+    <div class="logo">
+      AI<span>Agents</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>
+      About <span>AI Agents Hub</span>
+    </h1>
+
+    <p>
+      Discover, explore and understand the latest
+      AI agents transforming the way we work.
+    </p>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about">
+
+    <img
+      src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80"
+      alt="Artificial Intelligence">
+
+    <div class="about-text">
+
+      <h2>What is AI Agents Hub?</h2>
+
+      <p>
+        AI Agents Hub is a platform designed to help
+        users discover powerful artificial intelligence
+        agents in one place.
+      </p>
+
+      <p>
+        Whether you are a student, developer,
+        researcher or business owner, our platform
+        makes it easier to find AI tools for coding,
+        research, productivity and automation.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION -->
+
+  <section class="mission">
+
+    <h2>Our Mission</h2>
+
+    <p>
+      Our mission is to make AI technology easier
+      to discover and understand. We bring different
+      AI agents together so users can quickly find
+      the right tool for their needs and explore
+      new possibilities with artificial intelligence.
+    </p>
+
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section class="features">
+
+    <div class="feature">
+
+      <div class="icon">🔍</div>
+
+      <h3>Discover</h3>
+
+      <p>
+        Find useful and innovative AI agents
+        from different categories.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="icon">🤖</div>
+
+      <h3>Explore</h3>
+
+      <p>
+        Learn about AI tools and understand
+        what each agent can do.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="icon">⚡</div>
+
+      <h3>Improve</h3>
+
+      <p>
+        Use AI agents to automate tasks and
+        improve your everyday productivity.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 AI Agents Hub | All Rights Reserved
+
+  </footer>
+
+</body>
+</html>

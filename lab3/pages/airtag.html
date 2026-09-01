@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AirTag — Keep track of your things</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+        "Segoe UI", Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 7%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(18px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .buy-btn {
+      background: #0071e3;
+      color: white !important;
+      padding: 9px 17px;
+      border-radius: 22px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      background:
+        radial-gradient(circle at 50% 35%, #303030 0%, #111 28%, #000 65%);
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 10vw, 125px);
+      line-height: 0.9;
+      letter-spacing: -7px;
+      margin-bottom: 25px;
+      background: linear-gradient(180deg, #fff, #888);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #aaa;
+      font-size: clamp(18px, 2.5vw, 25px);
+      line-height: 1.5;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .primary-btn {
+      background: #0071e3;
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: #1685f5;
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      border: 1px solid #555;
+      color: white;
+    }
+
+    .secondary-btn:hover {
+      border-color: #fff;
+    }
+
+    /* AIRTAG */
+    .airtag-container {
+      margin: 80px auto 20px;
+      width: 280px;
+      height: 280px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .airtag {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #f9f9f9, #cfcfcf);
+      box-shadow:
+        0 30px 70px rgba(0,0,0,0.8),
+        inset -15px -15px 30px rgba(0,0,0,0.15),
+        inset 10px 10px 25px rgba(255,255,255,0.9);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .airtag::before {
+      content: "";
+      position: absolute;
+      width: 225px;
+      height: 225px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff, #ddd);
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    .airtag::after {
+      content: "";
+      position: absolute;
+      color: #111;
+      font-size: 80px;
+      font-weight: 500;
+    }
+
+    .ring {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-15px) rotate(3deg);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      40% {
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    /* SECTION */
+    section {
+      padding: 130px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(40px, 6vw, 75px);
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 70px;
+      color: #999;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    /* FEATURES */
+    .features {
+      background: #080808;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .feature-card {
+      min-height: 330px;
+      padding: 35px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+      border: 1px solid #252525;
+      transition: 0.4s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: #444;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 50px;
+    }
+
+    .feature-card h3 {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .feature-card p {
+      color: #999;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* FIND SECTION */
+    .find-section {
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at center, #122b45 0%, #05080c 45%, #000 75%);
+    }
+
+    .find-content {
+      max-width: 850px;
+    }
+
+    .find-content h2 {
+      font-size: clamp(45px, 7vw, 85px);
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .find-content p {
+      color: #aaa;
+      font-size: 21px;
+      line-height: 1.6;
+    }
+
+    .radar {
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      margin: 60px auto;
+      border: 1px solid rgba(0,113,227,0.5);
+      position: relative;
+      background: repeating-radial-gradient(
+        circle,
+        transparent 0,
+        transparent 35px,
+        rgba(0,113,227,0.15) 36px,
+        transparent 37px
+      );
+    }
+
+    .radar::before {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      background: #2997ff;
+      left: 50%;
+      top: 50%;
+      transform-origin: left;
+      animation: scan 2s linear infinite;
+      box-shadow: 0 0 15px #2997ff;
+    }
+
+    .dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #2997ff;
+      border-radius: 50%;
+      top: 25%;
+      right: 25%;
+      box-shadow: 0 0 20px #2997ff;
+    }
+
+    @keyframes scan {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* PRIVACY */
+    .privacy {
+      background: #f5f5f7;
+      color: #111;
+      text-align: center;
+    }
+
+    .privacy p {
+      max-width: 750px;
+      margin: auto;
+      color: #555;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    /* PRICE */
+    .buy-section {
+      text-align: center;
+      background: #000;
+    }
+
+    .price {
+      font-size: 60px;
+      font-weight: 600;
+      margin: 30px 0;
+    }
+
+    .small-text {
+      color: #777;
+      margin-bottom: 35px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 50px 7%;
+      background: #080808;
+      border-top: 1px solid #222;
+      color: #666;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      nav {
+        padding: 0 20px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 90px 20px;
+      }
+
+      .hero h1 {
+        letter-spacing: -4px;
+      }
+
+      .airtag-container {
+        transform: scale(0.8);
+        margin-top: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">AirTag</div>
+
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#find">Find</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#buy" class="buy-btn">Buy</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+
+    <h1>AirTag</h1>
+
+    <p>
+      Lose your knack for losing things.
+      AirTag makes it easy to keep track of your
+      keys, backpack, luggage, and more.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#buy" class="primary-btn">Buy AirTag</a>
+      <a href="#features" class="secondary-btn">Learn more</a>
+    </div>
+
+    <div class="airtag-container">
+      <div class="ring"></div>
+      <div class="airtag"></div>
+    </div>
+
+  </header>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+
+    <h2 class="section-title">Small device.<br>Big help.</h2>
+
+    <p class="section-subtitle">
+      AirTag is designed to help you find the things
+      that matter most, with powerful features packed
+      into a tiny, elegant device.
+    </p>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="icon">📍</div>
+        <h3>Precision Finding</h3>
+        <p>
+          Get directions to your AirTag with visual,
+          haptic, and audio feedback when you're nearby.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🔊</div>
+        <h3>Play a Sound</h3>
+        <p>
+          Can't find your keys? Play a sound on your
+          AirTag and follow the audio to locate them.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🌐</div>
+        <h3>Find My Network</h3>
+        <p>
+          A vast network of Apple devices can help
+          locate your lost AirTag, even when it's far away.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">💧</div>
+        <h3>Water Resistant</h3>
+        <p>
+          Built to handle everyday life, AirTag is
+          designed to withstand water and dust.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🔋</div>
+        <h3>Replaceable Battery</h3>
+        <p>
+          A replaceable battery keeps your AirTag
+          working without needing to recharge it.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>Private & Secure</h3>
+        <p>
+          Your location data stays private and anonymous
+          while helping you find your belongings.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FIND -->
+  <section class="find-section" id="find">
+
+    <div class="find-content">
+
+      <h2>Find it.<br>Fast.</h2>
+
+      <p>
+        Open the Find My app and see where your item is.
+        When you're nearby, Precision Finding can guide
+        you directly to it.
+      </p>
+
+      <div class="radar">
+        <div class="dot"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy" id="privacy">
+
+    <h2 class="section-title">Your privacy.<br>Always.</h2>
+
+    <p>
+      AirTag is designed with privacy in mind.
+      Location and history data are not stored on
+      the AirTag itself, helping keep your information
+      private while you search for your belongings.
+    </p>
+
+  </section>
+
+  <!-- BUY -->
+  <section class="buy-section" id="buy">
+
+    <h2 class="section-title">AirTag</h2>
+
+    <p class="section-subtitle">
+      Keep track of your things with a little help.
+    </p>
+
+    <div class="price">$29</div>
+
+    <p class="small-text">
+      One AirTag · Accessories sold separately
+    </p>
+
+    <a href="#" class="primary-btn">Buy Now</a>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2026 AirTag Concept. This is an independent
+      fan-made design and is not affiliated with Apple Inc.
+    </p>
+  </footer>
+
+</body>
+</html>

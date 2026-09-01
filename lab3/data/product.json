@@ -1,0 +1,122 @@
+[
+  {
+    "name": "iPhone 17 Pro",
+    "brand": "Apple",
+    "display": "6.3-inch OLED",
+    "processor": "A19 Pro",
+    "ram": "12 GB",
+    "storage": ["256 GB", "512 GB", "1 TB"],
+    "camera": "48 MP triple camera",
+    "battery": "Up to 31 hours video playback",
+    "os": "iOS 26",
+    "price_usd": 1099
+  },
+  {
+    "name": "Samsung Galaxy S26 Ultra",
+    "brand": "Samsung",
+    "display": "6.9-inch Dynamic AMOLED 2X",
+    "processor": "Snapdragon flagship processor",
+    "ram": "12 GB",
+    "storage": ["256 GB", "512 GB", "1 TB"],
+    "camera": "200 MP quad camera",
+    "battery": "5000 mAh",
+    "os": "Android",
+    "price_usd": 1299
+  },
+  {
+    "name": "Google Pixel 10 Pro",
+    "brand": "Google",
+    "display": "6.3-inch OLED",
+    "processor": "Google Tensor",
+    "ram": "16 GB",
+    "storage": ["128 GB", "256 GB", "512 GB"],
+    "camera": "50 MP triple camera",
+    "battery": "Approx. 5000 mAh",
+    "os": "Android",
+    "price_usd": 999
+  },
+  {
+    "name": "OnePlus 13",
+    "brand": "OnePlus",
+    "display": "6.82-inch AMOLED",
+    "processor": "Snapdragon 8 Elite",
+    "ram": "12 GB",
+    "storage": ["256 GB", "512 GB"],
+    "camera": "50 MP triple camera",
+    "battery": "6000 mAh",
+    "os": "OxygenOS",
+    "price_usd": 899
+  },
+  {
+    "name": "Xiaomi 15 Ultra",
+    "brand": "Xiaomi",
+    "display": "6.73-inch AMOLED",
+    "processor": "Snapdragon 8 Elite",
+    "ram": "16 GB",
+    "storage": ["512 GB", "1 TB"],
+    "camera": "50 MP quad camera",
+    "battery": "5410 mAh",
+    "os": "HyperOS",
+    "price_usd": 1199
+  },
+  {
+    "name": "Sony Xperia 1 VII",
+    "brand": "Sony",
+    "display": "6.5-inch OLED",
+    "processor": "Snapdragon flagship processor",
+    "ram": "12 GB",
+    "storage": ["256 GB"],
+    "camera": "48 MP triple camera",
+    "battery": "5000 mAh",
+    "os": "Android",
+    "price_usd": 1399
+  },
+  {
+    "name": "Nothing Phone (3)",
+    "brand": "Nothing",
+    "display": "6.67-inch AMOLED",
+    "processor": "Snapdragon 8s Gen 4",
+    "ram": "12 GB",
+    "storage": ["256 GB", "512 GB"],
+    "camera": "50 MP triple camera",
+    "battery": "5150 mAh",
+    "os": "Nothing OS",
+    "price_usd": 799
+  },
+  {
+    "name": "ASUS ROG Phone 9",
+    "brand": "ASUS",
+    "display": "6.78-inch AMOLED",
+    "processor": "Snapdragon 8 Elite",
+    "ram": "16 GB",
+    "storage": ["512 GB", "1 TB"],
+    "camera": "50 MP triple camera",
+    "battery": "5800 mAh",
+    "os": "Android",
+    "price_usd": 999
+  },
+  {
+    "name": "Motorola Edge 60 Pro",
+    "brand": "Motorola",
+    "display": "6.7-inch pOLED",
+    "processor": "MediaTek Dimensity",
+    "ram": "12 GB",
+    "storage": ["256 GB", "512 GB"],
+    "camera": "50 MP triple camera",
+    "battery": "6000 mAh",
+    "os": "Android",
+    "price_usd": 699
+  },
+  {
+    "name": "Samsung Galaxy Z Fold 7",
+    "brand": "Samsung",
+    "display": "8.0-inch foldable AMOLED",
+    "processor": "Snapdragon flagship processor",
+    "ram": "12 GB",
+    "storage": ["256 GB", "512 GB", "1 TB"],
+    "camera": "50 MP triple camera",
+    "battery": "4400 mAh",
+    "os": "Android",
+    "price_usd": 1999
+  }
+]
