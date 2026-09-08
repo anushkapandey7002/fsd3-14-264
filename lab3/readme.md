@@ -40,11 +40,7 @@ call back - arrow/nameless function : ()=>{}
 4. Patch
 5. Delete
 
-# http methods
-url,method,socket,headers
 
-# http Status Codes: 200-ok, 201-created, 400-bad request, 401-unauthorised, 403-forbiden, 404-page not found, 500-int server error **status code**
-A small package to install which include all these things : 
 
 # API
 any api can be of four types: get(R:read), post(C:create), put&patch(U: update), duck(D:delete)
@@ -67,3 +63,50 @@ content-type is used to tell the browser what type of data is being sent in the 
 2. 'text/json' - 
 3. 'text/plain' - 
 
+# http methods
+url,method,socket,headers
+
+# http Status Codes: 
+- 200-OK
+- 201-CREATED 
+- 202-ACCEPTED
+- 204-NO CONTENT
+- 400-BAD REQUEST 
+- 401-UNAUTHORISED 
+- 403-FORBIDDEN 
+- 404-NOT FOUND
+- 500-INTERNAL SERVER ERROR
+- 503-SERVICE UNAVAILABLE
+A small package to install which include all these things : 
+
+## SERVER CAN SEND DATA
+1.html 
+3.json data
+4.plain text
+5.css
+6.jss
+6.
+
+7.file
+
+## Server can set header to send data
+
+1. res.setHeader
+2. res.writeHeader()
+
+## server can set status code
+1. res.statusCode()
+2. res.writeHeader()
+
+## request methods
+
+1. get
+2. post
+3. put/patch
+4. delete
+
+# Routes
+- "/" -> home/index/localhost
+- "/users"
+- "/products/2369" -> from many products we want only 2369
+- "/products?S=TV" -> products: route , S=TV: query string
