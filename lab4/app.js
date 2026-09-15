@@ -77,24 +77,24 @@ const server = http.createServer(async (req, res) => {
 
   }
 
-   else if (pathname.startsWith("/api/v1/teams" )&& method == "PUT") {
+  //  else if (pathname.startsWith("/api/v1/teams" )&& method == "PUT") {
 
-    const id = Number(pathname.split("/").pop());
-    const oldTeam = getTeamById(id);
-    if(!oldTeam)
-      return sendJson(res, 400, { error: `Team with id: ${id} not found`,});
+  //   const id = Number(pathname.split("/").pop());
+  //   const oldTeam = getTeamById(id);
+  //   if(!oldTeam)
+  //     return sendJson(res, 400, { error: `Team with id: ${id} not found`,});
 
-    const { tname, tl, members } = await parseJSONBody(req);
-    if (!tname || !tl || !members)
-      return sendJson(res, 400, {
-        error: "Team Name, Team Leader, or Members not defined",
-      });
-    const updateTeam = updateTeamById(id,{ tname, tl, members });
+  //   const { tname, tl, members } = await parseJSONBody(req);
+  //   if (!tname || !tl || !members)
+  //     return sendJson(res, 400, {
+  //       error: "Team Name, Team Leader, or Members not defined",
+  //     });
+  //   const updateTeam = updateTeamById(id,{ tname, tl, members });
 
 
-    return sendJson(res, 200, updateTeam, "Message", "Team updated successfully");
+  //   return sendJson(res, 200, updateTeam, "Message", "Team updated successfully");
 
-  }
+  // }
 
   
   else {
