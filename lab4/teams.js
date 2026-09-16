@@ -8,7 +8,7 @@ let teams = [
     },
     {
         id:2,
-        tname:"Syntax",
+        tname:"Syntax Squad",
         tl:'Aman Pandey',
         email:'aman@gmail.com',
         members:5,
