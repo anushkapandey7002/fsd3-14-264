@@ -40,7 +40,7 @@ orderObj.on("error", (err) => {
 
 orderObj.placeOrder({
   id: "ORD10001",
-  customerName: "Ramesh Solanki",
+  customerName: "Ramesh Solank",
   email: "ramesh.sol27@gmail.com",
   items: [
     { name: "wireless mouse", qty: 1 },
