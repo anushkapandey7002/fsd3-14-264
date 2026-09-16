@@ -29,7 +29,7 @@ const addToCart = async (product) => {
 const displayCart = async () => {
   const cart = await getCart();
   if (cart.length == 0) {
-    console.log("\nCart is empty\n");
+    console.log("\nThe cart is empty\n");
     return;
   }
   console.table(cart);
