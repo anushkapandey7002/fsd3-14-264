@@ -22,7 +22,7 @@ const appendData = async (fname,content) => {// append content
 
 await addContent("notes.txt","FS is easy in JS");
 console.log("Contents\n",await readContent("notes.txt"));
-await appendData("notes.txt","it can add, read and update content");
+await appendData("notes.txt","it can add, read and update the content");
 console.log("Updated Contents\n", await readContent("notes.txt"));
 
 
