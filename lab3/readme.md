@@ -79,7 +79,7 @@ url,method,socket,headers
 - 503-SERVICE UNAVAILABLE
 A small package to install which include all these things : 
 
-## SERVER CAN SEND DATA
+# SERVER CAN SEND DATA
 1.html 
 3.json data
 4.plain text
