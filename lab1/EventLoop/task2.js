@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 
 const writeData = async () => {
     try {
-        console.log("about to write...");
+        console.log("about to write.....");
         await fs.writeFile('stud.txt', 'Name: Anushka Pandey');
         console.log("File written successfully");
     } catch (error) {
