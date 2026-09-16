@@ -10,4 +10,4 @@ app.get("/",(req,res)=>{
 //     res.send("route not found");
 // });
 
-app.listen(3000,()=>console.log("Server is Running"));
+app.listen(3000,()=>console.log("The Server is Running"));
