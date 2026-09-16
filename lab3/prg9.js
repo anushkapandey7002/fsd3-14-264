@@ -38,5 +38,5 @@ res.end("Not found");
 });
 
 server.listen(3000, () => {
-  console.log('prg9 is running at 3000');
+  console.log('prg9 server is running at 3000');
 });
