@@ -5,7 +5,7 @@ import {mkdir,rm} from "fs/promises";
 
 await mkdir("docs/resumes/data",{recursive: true});
 // 
-// //removes only data folder 
+// //it removes only the data folder 
 //await rm("docs/resumes/data",{recursive: true});
 
 //removes main folder and sub folder also
