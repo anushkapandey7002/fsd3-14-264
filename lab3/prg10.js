@@ -32,4 +32,4 @@ else if(req.url === '/product' && req.method === 'GET')
 
 
 
-server.listen(3000, () => {console.log("Server is running at 3000...")});
+server.listen(3000, () => {console.log("The server is running at 3000...")});
