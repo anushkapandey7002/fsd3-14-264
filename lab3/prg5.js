@@ -11,4 +11,4 @@ const product = {
 res.end(JSON.stringify(product));
 });
 
-server.listen(3000, () => {console.log("Server is running.....")});
+server.listen(3000, () => {console.log("The Server is running.....")});
