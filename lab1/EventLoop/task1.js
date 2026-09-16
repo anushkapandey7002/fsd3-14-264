@@ -1,5 +1,5 @@
 const f1 = () => {           //synchronous call // js is synchrounous and single threaded language
-  console.log("f1 starts");   //kin asynchrounous we use event loop to manage the call stack
+  console.log("f1 starts here");   //kin asynchrounous we use event loop to manage the call stack
   f2();
   console.log("f1 running");
   console.log("f1 end");
