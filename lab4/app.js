@@ -107,5 +107,5 @@ const server = http.createServer(async (req, res) => {
 );
 
 server.listen(PORT, () => {
-  console.log("SIH Server is running at ", PORT);
+  console.log("SIH is running at ", PORT);
 });
