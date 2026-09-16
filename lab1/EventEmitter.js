@@ -24,7 +24,7 @@ task.emit("greet", "Rahul Singh");
 console.log();
 
 task.off("greet", sayHi);//must have function name to execute off
-task.emit("greet", "Manish Singh");
+task.emit("greet", "Manisha Singh");
 task.emit("greet", "Mukesh Singh");
 console.log();
 
