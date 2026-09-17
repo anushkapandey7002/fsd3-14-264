@@ -16,3 +16,12 @@ Fast,unopionionated,minimilist web framework for Node.js
   },
 ```
 
+# modular - top to bottom
+# 
+1. app.get
+2. app.post
+3. app.put
+4. app.batch
+5. app.delete
+6. app.use
+
