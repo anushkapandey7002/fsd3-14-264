@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicWave - Premium Bluetooth Audio & Devices</title>
+    <style>
+        /* CSS Reset & Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d2ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d2ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #00d2ff;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #0099cc;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 5%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .feature-item {
+            flex: 1;
+            margin: 0 15px;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #1a1a2e;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #00d2ff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a2e;
+            color: #aaa;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">SonicWave</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/enquiry">Enquiry</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Wireless Freedom, Pure Sound</h1>
+        <p>Discover our range of premium Bluetooth headphones, speakers, and accessories designed for seamless connectivity and unmatched audio quality.</p>
+        <a href="#products" class="btn">Shop Collection</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-item">
+            <h3>⚡ Ultra-Fast Pairing</h3>
+            <p>Equipped with Bluetooth 5.3 technology for instant and stable connections.</p>
+        </div>
+        <div class="feature-item">
+            <h3>🔋 Long Battery Life</h3>
+            <p>Enjoy up to 40 hours of continuous playtime on a single charge.</p>
+        </div>
+        <div class="feature-item">
+            <h3>💧 IPX7 Water Resistant</h3>
+            <p>Built to withstand sweat and rain, perfect for sports and outdoor workouts.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <h2 class="section-title">Featured Devices</h2>
+        <div class="product-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80" alt="Wireless Headphones" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Pro Bass Headphones</h3>
+                    <p class="product-price">$129.99</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=500&q=80" alt="True Wireless Earbuds" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">AirPulse Earbuds</h3>
+                    <p class="product-price">$79.99</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=500&q=80" alt="Bluetooth Speaker" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">BoomBox Mini Speaker</h3>
+                    <p class="product-price">$49.99</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&w=500&q=80" alt="Smartwatch" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Pulse Fit Smartwatch</h3>
+                    <p class="product-price">$99.99</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SonicWave Audio Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
