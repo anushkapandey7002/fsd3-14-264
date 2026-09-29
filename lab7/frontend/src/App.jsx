@@ -1,0 +1,34 @@
+const b1 = {
+  picURL: "https://m.media-amazon.com/images/I/518+W2zr3BL._AC_UY327_FMwebp_QL65_.jpg",
+  bname: "React Design Pattern",
+  price: 1199,
+  quantity: 10,
+  rating: 5.0,
+};
+
+
+function Book(){
+  return(
+    <div>
+      <img src="https://m.media-amazon.com/images/I/518+W2zr3BL._AC_UY327_FMwebp_QL65_.jpg" alt="React Design Pattern" />
+      
+      <h1>Lets Us React</h1>
+      <h2>Price: 765.00</h2>
+      <h3>Quantity: 5</h3>
+      <h3>Ratings : 5</h3>
+    </div>
+  );
+}
+
+
+export default function App() {
+  return (
+  <>
+   <Book />
+   <h1>Hello React</h1>
+   <Book />
+   <Book />
+   <Book />
+  </>
+  );
+} 
