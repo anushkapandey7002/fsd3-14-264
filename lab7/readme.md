@@ -47,3 +47,5 @@ then apply with style attribute & pass the object
 `<h3 style={qtyStyle}>Quantity: {quantity}</h3>`
 
 3. inline in this method we use 2 curly braces with style attribute all the css property must be of single word, for eg: text-align becomes textAlign(camelCase)
+
+#rfce #rafce
