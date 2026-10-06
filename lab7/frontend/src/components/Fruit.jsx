@@ -5,7 +5,11 @@ const products = [
     {title:'Banana', id:4, isFruit:true},
 ];
 
-const ListItem = products.map((item) => (<li key={item.id}>{item.title}</li>));//key property is used to uniquely identify each item in the list, which helps React efficiently update and render the list when changes occur.
+const ListItem = products.map((item) => (
+<li  key={item.id} style= {{color: item.isFruit ? "red" : "green" }}>
+    {item.title}
+    </li>
+    ));//key property is used to uniquely identify each item in the list, which helps React efficiently update and render the list when changes occur.
 
 console.log(ListItem);
 

@@ -51,3 +51,5 @@ then apply with style attribute & pass the object
 #rfce #rafce
 
 # app.jsx should be minimum code
+
+## by default button in html is submit button
