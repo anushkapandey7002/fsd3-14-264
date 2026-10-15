@@ -53,3 +53,30 @@ then apply with style attribute & pass the object
 # app.jsx should be minimum code
 
 ## by default button in html is submit button
+
+--------------------------------------
+
+1. open terminal
+2. install tailwind by` npm install tailwindcss @tailwindcss/vite`
+3. open `vite.config.js`
+4. add `import tailwindcss from '@tailwindcss/vite` in first line
+5. add `tailwind()` after react()
+
+6. vite.config.js must look like this : 
+
+
+```
+import react from '@vitejs/plugin-react'
+import tailwindcss from "@tailwindcss/vite";
+
+import { defineConfig } from 'vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});
+
+```
+
+7. open index.css and remove all the content the add below line as written: 
+`@import "tailwindcss";`

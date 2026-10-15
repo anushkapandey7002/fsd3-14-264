@@ -3,9 +3,7 @@ const MyButton = () => {
         alert("Button Clicked");
     }
 
-    return<button 
-    style={{ height: "20px", width: "100px"}} 
-    onClick={handleClick}>
+    return<button className="bg-black text-white rounded p-3 m-3"    onClick={handleClick}>
         Click Me
         </button>;
 };
