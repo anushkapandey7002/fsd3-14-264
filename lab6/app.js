@@ -30,5 +30,5 @@ app.get("/api/products/:id", (req, res) => {
 });
 
 app.listen(3333, () => {
-  console.log("server is running at 3333");
+  console.log("The server is running at 3333");
 });
