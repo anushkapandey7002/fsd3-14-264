@@ -19,7 +19,7 @@ export const products = [
   },
   {
     id: 3,
-    name: "Mechanical Gaming Keyboard",
+    name: "Mechanical gaming Keyboard",
     description:
       "RGB backlit keyboard with blue switches and programmable keys.",
     rating: 4.8,
